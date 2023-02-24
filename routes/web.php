@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend;
+use App\Http\Controllers\Backend\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +32,8 @@ Route::middleware([
 });
 
 Route::get('/admin/logout', [AdminController::class, 'Logout'])->name('admin.logout');
+
+Route::prefix('users')->group(function(){
+    Route::get('/view', [UserController::class, 'UserView']) ->name('user.view');
+});
+
